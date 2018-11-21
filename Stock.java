@@ -8,7 +8,7 @@
 
  * Comment: Stock class which manages 
 
- * @author: Ryan Rice & Kristen Stansfield
+ * @author: Ryan Rice 
 
  * @version: 2018.11.21
 

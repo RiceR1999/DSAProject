@@ -8,7 +8,7 @@
 
  * Comment: Customer class which manages customer name and shopping cart
 
- * @author: Ryan Rice & Kristen Stansfield
+ * @author: Ryan Rice 
 
  * @version: 2018.11.21
 

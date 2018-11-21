@@ -6,9 +6,7 @@
 
  * Last update: 11/21/18
 
- * Submitted:  11/21/18
-
- * Comment: test suite and sample run attached
+ * Comment: Customer class which manages customer name and shopping cart
 
  * @author: Ryan Rice
 

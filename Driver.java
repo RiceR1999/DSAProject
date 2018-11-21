@@ -96,7 +96,9 @@ public class Driver {
      		shoppingNames.dequeue();
      	}
      	else {
-     		
+     		System.out.println("Customer " + checkoutNames.peek() + " with (numItems) returned to shopping");
+     		shoppingNames.enqueue(checkoutNames.peek());
+     		checkoutNames.dequeue();
      	}
              break;
      case 6:

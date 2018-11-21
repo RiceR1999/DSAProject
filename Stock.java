@@ -90,4 +90,14 @@ public class Stock {
 		}
 		return result;
 	}
+	
+	/**
+	 * Accepts an index location to convert to string, allows for more functionality within the driver
+	 * @param index
+	 * @return string item
+	 */
+	public String toString(int index)
+	{
+		return stock.get(index).getName() + " || " + stock.get(index).getCount();
+	}
 }

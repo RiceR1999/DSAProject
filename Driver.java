@@ -63,15 +63,25 @@ public class Driver {
      	break;
      	
      case 1:
-     	System.out.println("Please enter order: ");
+     	System.out.println("Enter customer name: ");
+     	String name = s.nextLine();
+     	//Add customer to the shoppingNames Queue
+     	System.out.println("Customer " + name + " is now in the shopping center.");
              break;
              
      case 2:
+         System.out.println("Enter customer name: ");
+      	 String addName = s.nextLine();
+      	 System.out.println("What item does " + addName + " want?");
+      	 String itemName = s.nextLine();
             break;
             
      case 3:
- 
-             break;
+	 System.out.println("Enter customer name: ");
+    	 String removeName = s.nextLine();
+    	 //Remove item from the customer's shopping cart
+    	 System.out.println("Customer " + removeName + " now has ");
+         break; 
              
      case 4:
      	

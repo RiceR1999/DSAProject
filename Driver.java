@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Driver {
 	public static void main(String[] args) throws IOException,InstantiationException,InstantiationException,ClassNotFoundException,IllegalAccessException   {
-		DEQ<String> shoppingNames = new DEQ<String>();
-		DEQ<String> checkoutNames = new DEQ<String>();
+		QueueRA<String> shoppingNames = new QueueRA<String>();
+		QueueRA<String> checkoutNames = new QueueRA<String>();
 		ListArrayBased<Stock>stock= new ListArrayBased<Stock>();
 		
 		Scanner s = new Scanner(System.in);

@@ -28,7 +28,6 @@ public class Driver {
           countStock++;
           
 	   }
-	   System.out.println(stock.toString());
        System.out.println("Please select the checkout line that should check out customers first (regular1/regular2/express): ");
        String c = s.next();
        if(c.equals("express")) {

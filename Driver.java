@@ -114,15 +114,21 @@ public class Driver {
     	 if(line1.isEmpty()) {
      		System.out.println("No customers are in the first shopping line!");
      	}
+    	 else {
+    	    	System.out.println("The following (num) customers are in the first checkout line : " + line1.toString());
+    	 }
     	 if(line2.isEmpty()) {
       		System.out.println("No customers are in the second shopping line!");
-      	}
+      	 }
+    	 else {
+    		 System.out.println("The following (num) customers are in the second checkout line : " + line2.toString());
+    	 }
     	 if(express.isEmpty()) {
       		System.out.println("No customers are in the express shopping line!");
-      	}
-    	System.out.println("The following (num) customers are in the first checkout line : " + line1.toString());
-    	System.out.println("The following (num) customers are in the second checkout line : " + line2.toString());
-    	System.out.println("The following (num) customers are in the express checkout line : " + line2.toString());
+      	 }
+    	 else {
+    		 System.out.println("The following (num) customers are in the express checkout line : " + line2.toString());
+    	 }
      	break;
      	
      case 8:

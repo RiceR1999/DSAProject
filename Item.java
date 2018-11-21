@@ -8,7 +8,7 @@
 
  * Comment: Basic item class that defines a stock item
 
- * @author: Ryan Rice & Kristen Stansfield
+ * @author: Ryan Rice
 
  * @version: 2018.11.21
 

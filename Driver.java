@@ -19,6 +19,7 @@ public class Driver {
 	   System.out.println("Please specify stock.");
 	   System.out.println("How many items do you have? ");
 	   Integer num = s.nextInt();
+	   System.out.println(num);
 	   int countStock=0;
 	   while(countStock<num) {
 		  System.out.print(">>Enter item name: ");
@@ -27,6 +28,7 @@ public class Driver {
           stock.add(0, itemName);
           System.out.print("How many " + itemName + "s?");
           Integer itemNum = s.nextInt();
+	  System.out.println(itemNum);
           System.out.println(itemNum + " items of " + itemName + " have been placed in stock.");
           countStock++;
           
@@ -68,6 +70,7 @@ public class Driver {
      case 1:
      	System.out.println("Enter customer name: ");
      	String name = s.next();
+	System.out.println(name);
      	//Add customer to the shoppingNames Queue
 	shoppingNames.enqueue(name);
      	System.out.println("Customer " + name + " is now in the shopping center.");
@@ -76,8 +79,10 @@ public class Driver {
      case 2:
          System.out.println("Enter customer name: ");
       	 String addName = s.next();
+	 System.out.println(addName);
       	 System.out.println("What item does " + addName + " want?");
       	 String itemName = s.next();
+	 System.out.println(itemName);
 	//Increase the number of items in the customer's cart by one
       	 //Decrease the number of that specific item in the stock by one. 
       	 //stock.remove(itemName);
@@ -88,6 +93,7 @@ public class Driver {
      case 3:
 	 System.out.println("Enter customer name: ");
     	 String removeName = s.next();
+	 System.out.println(removeName);
     	 //Remove item from the customer's shopping cart
     	 System.out.println("Customer " + removeName + " now has ");
          break; 
@@ -99,6 +105,7 @@ public class Driver {
     	//Prompts the user if the first customer in the checkoutLine should check out or keep shopping.
      	System.out.println("Should customer " + shoppingNames.peek() + " check out or keep on shopping? (Y/N)");
      	String a = s.next();
+	System.out.println(a);
      	//If answer == "Y", the first customer in the checkoutLine checks out and leaves the shopping center
      	if(a.equals("Y")) {
      		System.out.println("Customer " + shoppingNames.peek() + " is now leaving the shopping center.");
@@ -153,11 +160,13 @@ public class Driver {
      case 9:
       	System.out.println("Enter name of the item that you would like to re-order.");
       	String item = s.next();
+	System.out.println(item);
 	//Go through the stock to see if that item is present. If it is, add more to the stock
       	//If it isn't in the stock, it can't be re-ordered.
       	stock.add(0,item);
       	System.out.println("Enter number of " + item + "s ");
       	int itemNum = s.nextInt();
+	system.out.println(itemNum);
       	System.out.println("Stock now has " + itemNum + item + "s");
       	break;
      	

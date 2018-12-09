@@ -8,10 +8,13 @@ public class Driver {
 		QueueRA<Customer> shoppingNames = new QueueRA<Customber>();
 		QueueRA<Customber> checkoutNames = new QueueRA<Customber>();
 		ListArrayBased<Stock>stock= new ListArrayBased<Stock>();
+		QueueRA line1 = new QueueRA();
+		QueueRA line2 = new QueueRA();
+		QueueRA express = new QueueRA();
 		
 		Scanner s = new Scanner(System.in);
 	   //Start of the program
-	   System.out.println("Wlecome to the Shopping Center!");
+	   System.out.println("Welcome to the Shopping Center!");
 	   System.out.println("");
 	   System.out.println("Please specify stock.");
 	   System.out.println("How many items do you have? ");
@@ -45,7 +48,7 @@ public class Driver {
      System.out.println("0. Close the Shopping Center");
      System.out.println("1. Customer enters Shoppint Center.");
      System.out.println("2. Customer picks an item and places it in the shopping cart.");
-     System.out.println("3. Customer removes an itm from the shoppint cart.");
+     System.out.println("3. Customer removes an item from the shoppint cart.");
      System.out.println("4. Customer is done shopping. ");
      System.out.println("5. Customer checks out.");
      System.out.println("6. Print info about customers who are shopping.");
@@ -66,6 +69,7 @@ public class Driver {
      	System.out.println("Enter customer name: ");
      	String name = s.nextLine();
      	//Add customer to the shoppingNames Queue
+	shoppingNames.enqueue(name);
      	System.out.println("Customer " + name + " is now in the shopping center.");
              break;
              
@@ -74,6 +78,11 @@ public class Driver {
       	 String addName = s.nextLine();
       	 System.out.println("What item does " + addName + " want?");
       	 String itemName = s.nextLine();
+	//Increase the number of items in the customer's cart by one
+      	 //Decrease the number of that specific item in the stock by one. 
+      	 //stock.remove(itemName);
+      	 System.out.println(addName + " now has " + "(Number of items in cart ); in their shopping cart");
+      	 //If the item is not in the stock, it cannot be added to the customer's shopping cart
             break;
             
      case 3:
@@ -144,6 +153,8 @@ public class Driver {
      case 9:
       	System.out.println("Enter name of the item that you would like to re-order.");
       	String item = s.next();
+	//Go through the stock to see if that item is present. If it is, add more to the stock
+      	//If it isn't in the stock, it can't be re-ordered.
       	stock.add(0,item);
       	System.out.println("Enter number of " + item + "s ");
       	int itemNum = s.nextInt();

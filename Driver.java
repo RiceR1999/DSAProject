@@ -67,7 +67,7 @@ public class Driver {
      	
      case 1:
      	System.out.println("Enter customer name: ");
-     	String name = s.nextLine();
+     	String name = s.next();
      	//Add customer to the shoppingNames Queue
 	shoppingNames.enqueue(name);
      	System.out.println("Customer " + name + " is now in the shopping center.");
@@ -75,9 +75,9 @@ public class Driver {
              
      case 2:
          System.out.println("Enter customer name: ");
-      	 String addName = s.nextLine();
+      	 String addName = s.next();
       	 System.out.println("What item does " + addName + " want?");
-      	 String itemName = s.nextLine();
+      	 String itemName = s.next();
 	//Increase the number of items in the customer's cart by one
       	 //Decrease the number of that specific item in the stock by one. 
       	 //stock.remove(itemName);
@@ -87,7 +87,7 @@ public class Driver {
             
      case 3:
 	 System.out.println("Enter customer name: ");
-    	 String removeName = s.nextLine();
+    	 String removeName = s.next();
     	 //Remove item from the customer's shopping cart
     	 System.out.println("Customer " + removeName + " now has ");
          break; 
@@ -98,7 +98,7 @@ public class Driver {
      case 5:
     	//Prompts the user if the first customer in the checkoutLine should check out or keep shopping.
      	System.out.println("Should customer " + shoppingNames.peek() + " check out or keep on shopping? (Y/N)");
-     	String a = s.nextLine();
+     	String a = s.next();
      	//If answer == "Y", the first customer in the checkoutLine checks out and leaves the shopping center
      	if(a.equals("Y")) {
      		System.out.println("Customer " + shoppingNames.peek() + " is now leaving the shopping center.");

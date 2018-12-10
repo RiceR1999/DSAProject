@@ -88,7 +88,6 @@ public class Driver {
 				} else {
 					System.out.println("Enter customer name: ");
 					String addName = s.next();
-					Customer person = new Customer(addName);
 					System.out.println("What item does " + addName + " want?");
 					String itemName = s.next();
 					boolean found = false;
@@ -97,8 +96,7 @@ public class Driver {
 						if (stock.get(x).equals(itemName)) {
 							found=true;
 							person.addToCart(itemName);
-							System.out.println(person.getCartSize());
-							total = person.getCartSize()+total;
+							total = person.getCartSize()+1;
 							System.out.println(addName + " now has " + total + " item in their shopping cart");
 							// Decrease the number of that specific item in the stock by one.
 						}

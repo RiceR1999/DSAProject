@@ -92,11 +92,11 @@ public class Driver {
 					System.out.println("What item does " + addName + " want?");
 					String itemName = s.next();
 					boolean found = false;
-					int total = person.getCartSize();
+					int total = person.sizeOfCart();
 					for (int x = 0; x < stock.size(); x++) {
 						if (stock.get(x).equals(itemName)) {
 							found=true;
-							person.addToCart(itemName);
+							person.addToCart();
 							total++;
 							System.out.println(addName + " now has " + total + " item in their shopping cart");
 							// Decrease the number of that specific item in the stock by one.
@@ -180,7 +180,7 @@ public class Driver {
 						checkoutNames.dequeue();
 					} else {
 						System.out
-								.println("Customer " + checkoutNames.peek() + " with (numItems) returned to shopping");
+								.println("Customer " + checkoutNames.peek() + " with " +  checkoutNames.peek().sizeOfCart() + "returned to shopping");
 						shoppingNames.enqueue(checkoutNames.peek());
 						checkoutNames.dequeue();
 					}

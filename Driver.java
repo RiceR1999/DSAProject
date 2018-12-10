@@ -20,6 +20,7 @@ public class Driver {
 		QueueRA line2 = new QueueRA();
 		QueueRA express = new QueueRA();
 		ListArrayBased<Stock> stock = new ListArrayBased<Stock>();
+		Customer person;
 		Scanner s = new Scanner(System.in);
 		// Start of the program
 		System.out.println("Welcome to the Shopping Center!");
@@ -76,7 +77,7 @@ public class Driver {
 			case 1:
 				System.out.println("Enter customer name: ");
 				String name = s.next();
-				Customer person = new Customer(name);
+				person = new Customer(name);
 				shoppingNames.enqueue(person);
 				System.out.println("Customer " + name + " is now in the Shopping Center.");
 				break;

@@ -144,13 +144,13 @@ public class Driver {
 					checkoutNames.enqueue(shoppingNames.peek());
 					shoppingNames.dequeue();
 				} else if (c.equals("regular2")) {
-					System.out.println("After (numMinutes) in the shopping center, customer " + shoppingNames.peek()
+					System.out.println("After (numMinutes) in the shopping center, customer " + shoppingNames.peek().getName()
 							+ " with (numItems) is now in the second checkout line");
 					line2.enqueue(shoppingNames.peek());
 					checkoutNames.enqueue(shoppingNames.peek());
 					shoppingNames.dequeue();
 				} else if (c.equals("express")) {
-					System.out.println("After (numMinutes) in the shopping center, customer " + shoppingNames.peek()
+					System.out.println("After (numMinutes) in the shopping center, customer " + shoppingNames.peek().getName()
 							+ " with (numItems) is now in the express checkout line");
 					express.enqueue(shoppingNames.peek());
 					checkoutNames.enqueue(shoppingNames.peek());
@@ -171,16 +171,16 @@ public class Driver {
 					// Prompts the user if the first customer in the checkoutLine should check out
 					// or keep shopping.
 					System.out.println(
-							"Should customer " + checkoutNames.peek() + " check out or keep on shopping? (Y/N)");
+							"Should customer " + checkoutNames.peek().getName() + " check out or keep on shopping? (Y/N)");
 					String a = s.next();
 					// If answer == "Y", the first customer in the checkoutLine checks out and
 					// leaves the shopping center
 					if (a.equals("Y")) {
-						System.out.println("Customer " + checkoutNames.peek() + " is now leaving the shopping center.");
+						System.out.println("Customer " + checkoutNames.peek().getName() + " is now leaving the shopping center.");
 						checkoutNames.dequeue();
 					} else {
 						System.out
-								.println("Customer " + checkoutNames.peek() + " with " +  checkoutNames.peek().sizeOfCart() + "returned to shopping");
+								.println("Customer " + checkoutNames.peek().getName() + " with " +  checkoutNames.peek().sizeOfCart() + "returned to shopping");
 						shoppingNames.enqueue(checkoutNames.peek());
 						checkoutNames.dequeue();
 					}

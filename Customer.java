@@ -29,6 +29,15 @@ public class Customer {
 		this.cart = new ArrayList<>();
 	}
 	
+		/**
+	 * Accessor method that returns the size of the customer's cart
+	 * @return cart.size()
+	 */
+	public int getCartSize()
+	{
+		return cart.size();
+	}
+	
 	/**
 	 * Accessor method that returns customer name
 	 * @return name

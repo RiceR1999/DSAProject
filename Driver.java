@@ -107,7 +107,6 @@ public class Driver {
 						}
 					}
 				break;
-				break;
 			case 3:
 				if (shoppingNames.isEmpty()) {
 					System.out.println("No one is in the shopping center!");

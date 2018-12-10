@@ -108,14 +108,22 @@ public class Driver {
 					}
 				break;
 			case 3:
-				if (shoppingNames.isEmpty()) {
+					if (shoppingNames.isEmpty()) {
 					System.out.println("No one is in the shopping center!");
 				} else {
 					System.out.println("Enter customer name: ");
 					String removeName = s.next();
 					// Remove item from the customer's shopping cart
-					
-					System.out.println("Customer " + removeName + " now has (Number of items in cart ); in their shopping cart");
+					for(Customer cust: shoppingNames)
+					{
+						if(cust.getName().equalsIgnoreCase(removeName))
+						{
+							cust.removeFromCart();
+							System.out.println("Customer " + removeName + " now has " + cust.sizeOfCart() + " items in their cart");
+							break;
+						}
+					}
+						System.out.println("Customer not found");
 				}
 				break;
 			case 4:

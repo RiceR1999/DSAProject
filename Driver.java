@@ -87,19 +87,26 @@ public class Driver {
 				} else {
 					System.out.println("Enter customer name: ");
 					String addName = s.next();
+					Customer person = new Customer(addName);
 					System.out.println("What item does " + addName + " want?");
 					String itemName = s.next();
+					boolean found = false;
+					int total = 0;
 					for (int x = 0; x < stock.size(); x++) {
 						if (stock.get(x).equals(itemName)) {
-							System.out.println(addName + " now has " + "(Number of items in cart ); in their shopping cart");
-							// Increase the number of items in the customer's cart by one
+							found=true;
+							person.addToCart(itemName);
+							System.out.println(person.getCartSize());
+							total = person.getCartSize()+total;
+							System.out.println(addName + " now has " + total + " item in their shopping cart");
 							// Decrease the number of that specific item in the stock by one.
-						} else {
-							System.out.println("That item is not in the stock!");
 						}
 					}
-				}
-
+						if(!found) {
+							System.out.println("Item is not in the stock!");
+						}
+					}
+				break;
 				break;
 			case 3:
 				if (shoppingNames.isEmpty()) {

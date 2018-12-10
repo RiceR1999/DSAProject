@@ -91,12 +91,12 @@ public class Driver {
 					System.out.println("What item does " + addName + " want?");
 					String itemName = s.next();
 					boolean found = false;
-					int total = 0;
+					int total = person.getCartSize();
 					for (int x = 0; x < stock.size(); x++) {
 						if (stock.get(x).equals(itemName)) {
 							found=true;
 							person.addToCart(itemName);
-							total = person.getCartSize()+1;
+							total++;
 							System.out.println(addName + " now has " + total + " item in their shopping cart");
 							// Decrease the number of that specific item in the stock by one.
 						}

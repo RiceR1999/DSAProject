@@ -219,26 +219,28 @@ public class Driver {
 					}
 				}
 				break;
-
 			case 9:
-				System.out.println("Enter name of the reorder item: ");
+					
+			System.out.println("Enter name of the reorder item: ");
 				String item = s.next();
 				// Go through the stock to see if that item is present. If it is, add more to
 				// the stock
 				// If it isn't in the stock, it can't be re-ordered.
+				boolean found = false;
 				for (int x = 0; x < stock.size(); x++) {
 					if (stock.get(x).equals(item)) {
+						found=true;
 						System.out.println("Enter number of " + item + "s ");
 						int itemNum = s.nextInt();
 						System.out.println("Stock now has " + itemNum + " more " + item + "s");
 						//Add that amount of the item to the stock
-					} else {
-						System.out.println("That item is not in the stock!");
-					}
+					} 
+				}
+				if(!found) {
+					System.out.println("That item is not in the stock!");
 				}
 
 				break;
-
 			default:
 				System.out.println("Please enter a valid number.");
 			}

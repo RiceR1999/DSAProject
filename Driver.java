@@ -21,6 +21,7 @@ public class Driver {
 		QueueRA express = new QueueRA();
 		ListArrayBased<Stock> stock = new ListArrayBased<Stock>();
 		Customer person;
+		int numCustomers=0;
 		Scanner s = new Scanner(System.in);
 		// Start of the program
 		System.out.println("Welcome to the Shopping Center!");
@@ -79,6 +80,7 @@ public class Driver {
 				String name = s.next();
 				person = new Customer(name);
 				shoppingNames.enqueue(person);
+				numCustomers++;
 				System.out.println("Customer " + name + " is now in the Shopping Center.");
 				break;
 
@@ -190,7 +192,7 @@ public class Driver {
 				if (shoppingNames.isEmpty()) {
 					System.out.println("No customers are in the Shopping Center!");
 				} else {
-					System.out.println("The following (num) customers are in the shopping center:");
+					System.out.println("The following " + numCustomers + " customers are in the shopping center:");
 					System.out.println(shoppingNames.toString());
 				}
 				break;

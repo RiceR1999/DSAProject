@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class Driver {
 	public static void main(String[] args) throws IOException, InstantiationException, InstantiationException,
 			ClassNotFoundException, IllegalAccessException {
-		QueueRA<String> shoppingNames = new QueueRA<String>();
-		QueueRA<String> checkoutNames = new QueueRA<String>();
+		QueueRA<Customer> shoppingNames = new QueueRA<Customer>();
+		QueueRA<Customer> checkoutNames = new QueueRA<Customer>();
 		QueueRA line1 = new QueueRA();
 		QueueRA line2 = new QueueRA();
 		QueueRA express = new QueueRA();
@@ -76,10 +76,11 @@ public class Driver {
 			case 1:
 				System.out.println("Enter customer name: ");
 				String name = s.next();
-				// Add the name to the queue of shoppingNames
-				shoppingNames.enqueue(name);
+				Customer person = new Customer(name);
+				shoppingNames.enqueue(person);
 				System.out.println("Customer " + name + " is now in the Shopping Center.");
 				break;
+
 
 			case 2:
 				if (shoppingNames.isEmpty()) {

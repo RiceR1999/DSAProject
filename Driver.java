@@ -190,12 +190,7 @@ public class Driver {
 				if (shoppingNames.isEmpty()) {
 					System.out.println("No customers are in the Shopping Center!");
 				} else {
-					System.out.println("The following " + shoppingNames.peek() + " customers are in the shopping center:");
-					// for(int x = 0; x<shoppingNames.size(); x++) {
-					// System.out.println("Customer " + shoppingNames.get(x) " with " +
-					// shoppingNames.get(x).getAmount() + " items for " +
-					// shoppingNames.get(x).getTimeShopping() + " minutes.");
-					// }
+					System.out.println("The following (num) customers are in the shopping center:");
 					System.out.println(shoppingNames.toString());
 				}
 				break;

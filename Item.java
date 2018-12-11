@@ -51,6 +51,6 @@ public class Item {
 	
 	public String toString()
 	{
-		return itemName + ", " + itemCount;
+		return " " + itemName + ", " + itemCount;
 	}
 }

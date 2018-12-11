@@ -1,0 +1,122 @@
+/*
+ * Purpose: Data Structure and Algorithms Final Project
+ * Status: Complete and thoroughly tested
+ * Last update: 10/9/18
+ * Submitted: 10/9/18
+ * Comment: no test suite or sample run attached
+ * @author: Ryan Rice & Kristen Stansfield
+ * @version: 2018.10.9
+ */
+public class QueueRA<T> implements QueueInterface<T> {
+	
+	public T[]items;
+	public int back; //the index of the first available array entry
+	public int front;
+	int numItems;
+	
+	/**
+	 * Constructor for QueueRA
+	 */
+	public QueueRA() {
+		items = (T[]) new Object [10];
+		back = 0;
+		front = 0;
+		numItems=0;
+	}
+	
+	/**
+	 * Checks if queue is empty
+	 */
+	public boolean isEmpty() {
+		return numItems==0;
+	}
+
+	/**
+	 * enqueue a new item 
+	 * @param newItem
+	 */
+	public void enqueue(T newItem) throws QueueException {
+			items[back] =  newItem;
+			back = (back+1) % items.length;
+	        numItems++;
+	        resize();
+		
+	}
+		
+	/**
+	 * dequeue first item in the queue
+	 */
+	public T dequeue() throws QueueException{
+			  
+			  if((back == 0) && (front == 0))
+			  {
+				  throw new QueueException("Queue exception on dequeue");
+			  }
+			  T data = items[front];
+			  items[front] = null;
+			  if(front == back)
+			  {
+				  front = 0;
+				  back = 0;
+			  }
+			  else if(front == items.length-1)
+			  {
+				  front = 0;
+			  }
+			  else
+			  {
+				  front ++;
+			  }
+			  return data;
+			  
+		  }
+	
+
+	/**
+	 * removes all items from queue
+	 */
+	public void dequeueAll() {
+		front = 0;
+		back = -1;
+		numItems = 0;
+	}
+	
+	
+	/**
+	 * resizes the array by length * 2
+	 */
+	protected void resize() {
+		T [] temp = (T[]) new Object [items.length*2];
+        for (int i = 0; i < numItems; i++) {
+            temp[i] = items[(front + i) % items.length];
+        }
+        items = temp;
+        front = 0;
+       
+    }
+	
+	/**
+	 * Takes all items in the queue and returns them as a string
+	 * @return String
+	 */
+	public String toString() {
+			  int curr = 0;
+			  String result = "";
+			  while(curr < numItems) {
+			   if(items[curr]!=null) {
+				  result = result + items[curr].toString() + " ";
+			  }
+			   curr++;
+		  }
+			  return result;
+	}
+	
+	/**
+	 * Returns first item in queue
+	 * @return front
+	 */
+	public T peek() throws QueueException {
+		return items[front];
+	}
+}
+ 

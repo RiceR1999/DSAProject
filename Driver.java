@@ -94,14 +94,14 @@ public class Driver {
 					System.out.println("What item does " + addName + " want?");
 					String itemName = s.next();
 					boolean found = false;
-					for(Customer cust: shoppingNames) {
-						if(cust.getName().equalsIgnoreCase(addName)){
-						for (int x = 0; x < stock.size(); x++) {
-							if (stock.get(x).equals(itemName)) {
-							found=true;
-							cust.addToCart();
-							System.out.println(cust.getName() + " now has " + cust.sizeOfCart() + " items in their shopping cart");
-							// Decrease the number of that specific item in the stock by one.
+					for (Customer cust : shoppingNames) {
+						if (cust.getName().equalsIgnoreCase(addName)) {
+							for(Item iteM:stock){
+								if (iteM.getName().equals(itemName)) {
+									found = true;
+									cust.addToCart();
+									System.out.println(cust.getName() + " now has " + cust.sizeOfCart()
+											+ " items in their shopping cart");
 						}
 					}
 					if(!found) {

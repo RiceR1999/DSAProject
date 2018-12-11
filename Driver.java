@@ -130,37 +130,6 @@ public class Driver {
 						System.out.println("Customer not found");
 				}
 				break;
-			case 4:
-				// The program picks the customer who has been shopping for the most amount of
-				// time
-				// (In order to simulate the passing of time, you should assume that every time
-				// a customer places an item into or removes an item from the shopping cart, a
-				// minute passes (for everybody in the Shopping Center))
-				// and has greater than zero items in their shopping cart to enter the line.
-				// The name of the customer is removed from the Shopping Queue and added to the
-				// CheckOut Queue.
-				if (shoppingNames.isEmpty()) {
-					System.out.println("No customers in the Shopping Center!");
-				} else if (c.equals("regular1")) {
-					System.out.println("After (numMinutes) in the shopping center, customer " + shoppingNames.peek()
-							+ " with (numItems) is now in the first checkout line");
-					line1.enqueue(shoppingNames.peek());
-					checkoutNames.enqueue(shoppingNames.peek());
-					shoppingNames.dequeue();
-				} else if (c.equals("regular2")) {
-					System.out.println("After (numMinutes) in the shopping center, customer " + shoppingNames.peek().getName()
-							+ " with (numItems) is now in the second checkout line");
-					line2.enqueue(shoppingNames.peek());
-					checkoutNames.enqueue(shoppingNames.peek());
-					shoppingNames.dequeue();
-				} else if (c.equals("express")) {
-					System.out.println("After (numMinutes) in the shopping center, customer " + shoppingNames.peek().getName()
-							+ " with (numItems) is now in the express checkout line");
-					express.enqueue(shoppingNames.peek());
-					checkoutNames.enqueue(shoppingNames.peek());
-					shoppingNames.dequeue();
-				}
-				break;
 
 				case 4:
 				// The program picks the customer who has been shopping for the most amount of

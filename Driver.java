@@ -119,6 +119,7 @@ public class Driver {
 				}
 				}
 				break;
+					
 			case 3:
 					if (shoppingNames.isEmpty()) {
 					System.out.println("No one is in the shopping center!");
@@ -143,7 +144,7 @@ public class Driver {
 				}
 				break;
 
-			case 4:
+		case 4:
 				// The program picks the customer who has been shopping for the most amount of
 				// time
 				// (In order to simulate the passing of time, you should assume that every time
@@ -166,6 +167,7 @@ public class Driver {
 							checkoutNames.enqueue(shoppingNames.peek());
 							shoppingNames.dequeue();
 							numExpress++;
+							numShopping--;
 						}
 				 else if (numCheckOutOne < numCheckOutTwo) {
 					 //Customer goes into line one
@@ -175,6 +177,7 @@ public class Driver {
 					checkoutNames.enqueue(shoppingNames.peek());
 					shoppingNames.dequeue();
 					numCheckOutOne++;
+					numShopping--;
 					}
 				 else {
 					//customer goes into line 2
@@ -188,35 +191,76 @@ public class Driver {
 
 					break;
 					
-				case 5:
-				// User is prompted in (Y/N) question format whether the first customer in the
-				// checkout line should check out or keep shopping.
-				// If Yes, the customer leaves the shopping center and their name is removed
-				// from the checkoutNames.
-				// If No, their name is removed from the checkoutNames queue and added to the
-				// shoppingNames queue.
+					
+			case 5:
 				if (line1.isEmpty() && line2.isEmpty() && express.isEmpty()) {
 					System.out.println("No customers are in any line!");
 				} else {
 					// Prompts the user if the first customer in the checkoutLine should check out
 					// or keep shopping.
-
-					System.out.println("Should customer " + checkoutNames.peek().getName()
+					//The line that should be checked out first is the line that was specified in the beginning
+					//Customers check out in a fair manner: all three checkout lines take turns in checking out customers.  
+					//If there is no customer in the line whose turn it is to check out a customer, 
+					//then the next checkout line that has customers in line will check out the first customer in line
+					
+					if(!(line1.isEmpty())||c.equals("regular1")) {
+					System.out.println("Should customer " + line1.peek().getName()
 							+ " check out or keep on shopping? (Y/N)");
 					String a = s.next();
-					// If answer == "Y", the first customer in the checkoutLine checks out and
+					// If answer == "Y", the first customer in line1 checks out and
 					// leaves the shopping center
 					if (a.equals("Y")) {
 						System.out.println(
-								"Customer " + checkoutNames.peek().getName() + " is now leaving the shopping center.");
+								"Customer " + line1.peek().getName() + " is now leaving the shopping center.");
 						checkoutNames.dequeue();
+						line1.dequeue();
 					} else {
-						System.out.println("Customer " + checkoutNames.peek().getName() + " with "
-								+ checkoutNames.peek().sizeOfCart() + " items returned to shopping");
-						shoppingNames.enqueue(checkoutNames.peek());
+						System.out.println("Customer " + line1.peek().getName() + " with "
+								+ line1.peek().sizeOfCart() + " items returned to shopping");
+						line1.peek().setMin(0);
+						shoppingNames.enqueue(line1.peek());
 						checkoutNames.dequeue();
+						line1.dequeue();
 					}
+					}
+					else if(!(line2.isEmpty())||c.equals("regular2")) {
+						System.out.println("Should customer " + line2.peek().getName()
+						+ " check out or keep on shopping? (Y/N)");
+						String a = s.next();
+						if (a.equals("Y")) {
+							System.out.println(
+									"Customer " + line2.peek().getName() + " is now leaving the shopping center.");
+							checkoutNames.dequeue();
+							line2.dequeue();
+						} else {
+							System.out.println("Customer " + line2.peek().getName() + " with "
+									+ line2.peek().sizeOfCart() + " items returned to shopping");
+							line2.peek().setMin(0);
+							shoppingNames.enqueue(line2.peek());
+							checkoutNames.dequeue();
+							line2.dequeue();
+						}
+					}
+					else if(!(express.isEmpty())||c.equals("express")){
+						System.out.println("Should customer " + express.peek().getName()
+								+ " check out or keep on shopping? (Y/N)");
+								String a = s.next();
+								if (a.equals("Y")) {
+									System.out.println(
+											"Customer " + express.peek().getName() + " is now leaving the shopping center.");
+									checkoutNames.dequeue();
+									express.dequeue();
+								} else {
+									System.out.println("Customer " + express.peek().getName() + " with "
+											+ express.peek().sizeOfCart() + " items returned to shopping");
+									express.peek().setMin(0);
+									shoppingNames.enqueue(express.peek());
+									checkoutNames.dequeue();
+									express.dequeue();
+								}
 				}
+				}
+				
 				break;
 					
 			case 6:

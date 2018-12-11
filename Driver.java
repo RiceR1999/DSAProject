@@ -162,8 +162,9 @@ public class Driver {
 				}
 				break;
 
-						case 4:
-				// The program picks the customer who has been shopping for the most amount of time
+				case 4:
+				// The program picks the customer who has been shopping for the most amount of
+				// time
 				// (In order to simulate the passing of time, you should assume that every time
 				// a customer places an item into or removes an item from the shopping cart, a
 				// minute passes (for everybody in the Shopping Center))
@@ -173,31 +174,58 @@ public class Driver {
 				if (shoppingNames.isEmpty()) {
 					System.out.println("No customers in the Shopping Center!");
 				} else if (c.equals("regular1")) {
-					for(Customer cust: shoppingNames)
-					{	
-						System.out.println("After " + cust.getMin() + " minutes in the shopping center, customer " + cust.getName() + " with " + cust.sizeOfCart() + " is now in the first checkout line");
-				
-					}
-					line1.enqueue(shoppingNames.peek());
-					checkoutNames.enqueue(shoppingNames.peek());
-					shoppingNames.dequeue();
-				} else if (c.equals("regular2")) {
-					for(Customer cust: shoppingNames)
-					{
-						System.out.println("After " + cust.getMin() + " minutes in the shopping center, customer " + cust.getName() + " with " + cust.sizeOfCart() + " is now in the second checkout line");
-					}
+					System.out.println("After " + shoppingNames.peek().getMin() +" minutes in the shopping center, customer " + shoppingNames.peek().getName()
+							+ " with " + shoppingNames.peek().sizeOfCart() + " is now in the first checkout line");	
+							line1.enqueue(shoppingNames.peek());
+							checkoutNames.enqueue(shoppingNames.peek());
+							shoppingNames.dequeue();
+						}
+				 else if (c.equals("regular2")) {
+					 System.out.println("After " + shoppingNames.peek().getMin() +" minutes in the shopping center, customer " + shoppingNames.peek().getName()
+								+ " with " + shoppingNames.peek().sizeOfCart() + " is now in the second checkout line");	
 					line2.enqueue(shoppingNames.peek());
 					checkoutNames.enqueue(shoppingNames.peek());
 					shoppingNames.dequeue();
-				} else if (c.equals("express")) {
-					for(Customer cust: shoppingNames) {
-					System.out.println("After " + cust.getMin() + " minutes in the shopping center, customer " + cust.getName() + " with " + cust.sizeOfCart() + " is now in the first checkout line");
 					}
+				 else if (c.equals("express")) {
+					System.out.println("After " + shoppingNames.peek().getMin() +" minutes in the shopping center, customer " + shoppingNames.peek().getName()
+							+ " with " + shoppingNames.peek().sizeOfCart() + " is now in the express checkout line");					
 					express.enqueue(shoppingNames.peek());
 					checkoutNames.enqueue(shoppingNames.peek());
 					shoppingNames.dequeue();
+				 }
+					
+				case 5:
+				// User is prompted in (Y/N) question format whether the first customer in the
+				// checkout line should check out or keep shopping.
+				// If Yes, the customer leaves the shopping center and their name is removed
+				// from the checkoutNames.
+				// If No, their name is removed from the checkoutNames queue and added to the
+				// shoppingNames queue.
+				if (line1.isEmpty() && line2.isEmpty() && express.isEmpty()) {
+					System.out.println("No customers are in any line!");
+				} else {
+					// Prompts the user if the first customer in the checkoutLine should check out
+					// or keep shopping.
+
+					System.out.println("Should customer " + checkoutNames.peek().getName()
+							+ " check out or keep on shopping? (Y/N)");
+					String a = s.next();
+					// If answer == "Y", the first customer in the checkoutLine checks out and
+					// leaves the shopping center
+					if (a.equals("Y")) {
+						System.out.println(
+								"Customer " + checkoutNames.peek().getName() + " is now leaving the shopping center.");
+						checkoutNames.dequeue();
+					} else {
+						System.out.println("Customer " + checkoutNames.peek().getName() + " with "
+								+ checkoutNames.peek().sizeOfCart() + " items returned to shopping");
+						shoppingNames.enqueue(checkoutNames.peek());
+						checkoutNames.dequeue();
+					}
 				}
 				break;
+					
 			case 6:
 			{
 				if (shoppingNames.isEmpty()) {

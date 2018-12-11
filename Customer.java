@@ -10,6 +10,7 @@ public class Customer {
 	
 	private String name;
 	private int cart;
+	private int minPassed;
 	
 	/**
 	 * Constructor for customer class
@@ -19,6 +20,7 @@ public class Customer {
 	{
 		this.name = name;
 		this.cart = 0;
+		this.minPassed = 0;
 	}
 	
 	/**
@@ -28,6 +30,16 @@ public class Customer {
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void minIncrement()
+	{
+		minPassed++;
+	}
+	
+	public int getMin()
+	{
+		return minPassed;
 	}
 	
 	public int sizeOfCart()
@@ -52,4 +64,4 @@ public class Customer {
 		cart--;
 	}
 
-
+}

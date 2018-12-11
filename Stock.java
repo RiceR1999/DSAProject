@@ -1,21 +1,16 @@
+
 /*
-
  * Purpose: Data Structure and Algorithms Final Project
-
  * Status: Complete and thoroughly tested
-
  * Last update: 11/21/18
-
  * Comment: Stock class which manages 
-
  * @author: Ryan Rice 
-
  * @version: 2018.11.21
-
  */
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Stock {
+public class Stock implements Iterable<Item> {
 
 	private ArrayList<Item> stock;
 	
@@ -52,6 +47,17 @@ public class Stock {
 			}
 		}
 		return theItem;
+	}
+	
+	public int getSize()
+	{
+		return stock.size();
+			
+	}
+	
+	public boolean isEmpty()
+	{
+		return stock.isEmpty();
 	}
 	
 	/**
@@ -100,4 +106,28 @@ public class Stock {
 	{
 		return stock.get(index).getName() + " || " + stock.get(index).getCount();
 	}
-}
+	
+	@Override
+	public Iterator<Item> iterator() {
+		Iterator<Item> it = new Iterator<Item>() {
+
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < stock.size() && stock.get(currentIndex) != null;
+            }
+
+            @Override
+            public Item next() {
+                return stock.get(currentIndex++);
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return it;
+    }
+	}

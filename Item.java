@@ -1,17 +1,10 @@
 /*
-
  * Purpose: Data Structure and Algorithms Final Project
-
  * Status: Complete and thoroughly tested
-
  * Last update: 11/21/18
-
  * Comment: Basic item class that defines a stock item
-
  * @author: Ryan Rice
-
  * @version: 2018.11.21
-
  */
 public class Item {
 
@@ -54,5 +47,10 @@ public class Item {
 	public String getName()
 	{
 		return itemName;
+	}
+	
+	public String toString()
+	{
+		return itemName + ", " + itemCount;
 	}
 }

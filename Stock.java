@@ -1,4 +1,5 @@
 
+
 /*
  * Purpose: Data Structure and Algorithms Final Project
  * Status: Complete and thoroughly tested
@@ -49,12 +50,20 @@ public class Stock implements Iterable<Item> {
 		return theItem;
 	}
 	
+	/**
+	 * returns size of stock array list
+	 * @return size
+	 */
 	public int getSize()
 	{
 		return stock.size();
 			
 	}
 	
+	/**
+	 * checks to see if array list is empty
+	 * @return true/false
+	 */
 	public boolean isEmpty()
 	{
 		return stock.isEmpty();
@@ -107,22 +116,37 @@ public class Stock implements Iterable<Item> {
 		return stock.get(index).getName() + " || " + stock.get(index).getCount();
 	}
 	
+	/**
+	 * Override of the iterator method to since we declared an array list in the class and 
+	 * have no access to for each / iterator outside of the class
+	 * @return it
+	 */
 	@Override
 	public Iterator<Item> iterator() {
 		Iterator<Item> it = new Iterator<Item>() {
 
             private int currentIndex = 0;
 
+            /**
+             * Checks to see if there is a next index in the list
+             */
             @Override
             public boolean hasNext() {
                 return currentIndex < stock.size() && stock.get(currentIndex) != null;
             }
-
+            
+            /**
+             * returns the next item in the list
+             * @return Item
+             */
             @Override
             public Item next() {
                 return stock.get(currentIndex++);
             }
-
+            
+            /**
+             * remove, we have no use for this method so we left it undefined
+             */
             @Override
             public void remove() {
                 throw new UnsupportedOperationException();

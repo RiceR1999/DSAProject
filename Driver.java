@@ -19,7 +19,7 @@ public class Driver {
 		QueueRA line1 = new QueueRA();
 		QueueRA line2 = new QueueRA();
 		QueueRA express = new QueueRA();
-		ListArrayBased<Stock> stock = new ListArrayBased<Stock>();
+		Stock stock = new Stock();
 		Customer person;
 		int numCustomers=0;
 		Scanner s = new Scanner(System.in);

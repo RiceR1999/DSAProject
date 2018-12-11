@@ -100,6 +100,11 @@ public class Driver {
 								if (iteM.getName().equals(itemName)) {
 									found = true;
 									cust.addToCart();
+									iteM.decrementCount();
+									for(Customer cust2: shoppingNames)
+									{
+										cust2.minIncrement();
+									}
 									System.out.println(cust.getName() + " now has " + cust.sizeOfCart()
 											+ " items in their shopping cart");
 						}
@@ -122,6 +127,10 @@ public class Driver {
 					{
 						if(cust.getName().equalsIgnoreCase(removeName))
 						{
+							for(Customer cust2: shoppingNames)
+							{
+								cust2.minIncrement();
+							}
 							cust.removeFromCart();
 							System.out.println("Customer " + removeName + " now has " + cust.sizeOfCart() + " items in their cart");
 							break;

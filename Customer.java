@@ -38,6 +38,14 @@ public class Customer {
 	{
 		minPassed++;
 	}
+	/**
+	 * Set the number of minutes
+	 * @param time
+	 */
+	public void setMin(int time)
+	{
+		minPassed=time;
+	}
 	
 	/**
 	 * Gets number of minutes

@@ -31,17 +31,26 @@ public class Customer {
 	{
 		return name;
 	}
-	
+	/**
+	 * increment minPassed
+	 */
 	public void minIncrement()
 	{
 		minPassed++;
 	}
 	
+	/**
+	 * Gets number of minutes
+	 * @return minPassed
+	 */
 	public int getMin()
 	{
 		return minPassed;
 	}
-	
+	/**
+	 * Gets size of cart
+	 * @return cart size
+	 */
 	public int sizeOfCart()
 	{
 		return cart;

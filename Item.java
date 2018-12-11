@@ -31,6 +31,9 @@ public class Item {
 		this.itemCount = count;
 	}
 	
+	/**
+	 * Decreases item count
+	 */
 	public void decrementCount()
 	{
 		itemCount--;
@@ -54,6 +57,10 @@ public class Item {
 		return itemName;
 	}
 	
+	/**
+	 * returns item name and item count as a string
+	 * @return itemName/itemCount as string
+	 */
 	public String toString()
 	{
 		return " " + itemName + ", " + itemCount;

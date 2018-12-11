@@ -189,15 +189,18 @@ public class Driver {
 				}
 				break;
 			case 6:
+			{
 				if (shoppingNames.isEmpty()) {
 					System.out.println("No customers are in the Shopping Center!");
 				} else {
 				System.out.println("The following " + numCustomers + " customers are in the shopping center:");
-					for(int x = 0; x<numCustomers; x++) {
-					System.out.println("Customer " + shoppingNames.peek().getName() + " with " + shoppingNames.peek().sizeOfCart() + " items for " +  time + " minutes.");
+					for(Customer cust: shoppingNames)
+					{
+						System.out.println("Customer " + cust.getName() + " with " + cust.sizeOfCart() + " items for " +  cust.getMin() + " minutes.");
 					}
-					
+				}
 				break;
+			}
 
 			case 7:
 				if (line1.isEmpty()) {

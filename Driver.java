@@ -21,7 +21,10 @@ public class Driver {
 		QueueRA express = new QueueRA();
 		Stock stock = new Stock();
 		Customer person;
-		int numCustomers=0;
+		int numShopping = 0;
+		int numCheckOutOne = 0;
+		int numCheckOutTwo = 0;
+		int numExpress = 0;
 		Scanner s = new Scanner(System.in);
 		// Start of the program
 		System.out.println("Welcome to the Shopping Center!");
@@ -140,7 +143,7 @@ public class Driver {
 				}
 				break;
 
-				case 4:
+case 4:
 				// The program picks the customer who has been shopping for the most amount of
 				// time
 				// (In order to simulate the passing of time, you should assume that every time
@@ -149,29 +152,41 @@ public class Driver {
 				// and has greater than zero items in their shopping cart to enter the line.
 				// The name of the customer is removed from the Shopping Queue and added to the
 				// CheckOut Queue.
+				// If the express line is twice as long as a regular line a customer with <=4 items will 
+				//choose the shortest regular line for checkout instead.
+				
 				if (shoppingNames.isEmpty()) {
 					System.out.println("No customers in the Shopping Center!");
-				} else if (c.equals("regular1")) {
+				}
+					else if (shoppingNames.peek().sizeOfCart()<=4) {
+					//Customer goes into express lane
 					System.out.println("After " + shoppingNames.peek().getMin() +" minutes in the shopping center, customer " + shoppingNames.peek().getName()
-							+ " with " + shoppingNames.peek().sizeOfCart() + " is now in the first checkout line");	
-							line1.enqueue(shoppingNames.peek());
+							+ " with " + shoppingNames.peek().sizeOfCart() + " items is now in the express checkout line");	
+							express.enqueue(shoppingNames.peek());
 							checkoutNames.enqueue(shoppingNames.peek());
 							shoppingNames.dequeue();
+							numExpress++;
 						}
-				 else if (c.equals("regular2")) {
+				 else if (numCheckOutOne < numCheckOutTwo) {
+					 //Customer goes into line one
 					 System.out.println("After " + shoppingNames.peek().getMin() +" minutes in the shopping center, customer " + shoppingNames.peek().getName()
-								+ " with " + shoppingNames.peek().sizeOfCart() + " is now in the second checkout line");	
+								+ " with " + shoppingNames.peek().sizeOfCart() + " items is now in the first checkout line");	
+					line1.enqueue(shoppingNames.peek());
+					checkoutNames.enqueue(shoppingNames.peek());
+					shoppingNames.dequeue();
+					numCheckOutOne++;
+					}
+				 else {
+					//customer goes into line 2
+					System.out.println("After " + shoppingNames.peek().getMin() +" minutes in the shopping center, customer " + shoppingNames.peek().getName()
+							+ " with " + shoppingNames.peek().sizeOfCart() + " items is now in the second checkout line");					
 					line2.enqueue(shoppingNames.peek());
 					checkoutNames.enqueue(shoppingNames.peek());
 					shoppingNames.dequeue();
-					}
-				 else if (c.equals("express")) {
-					System.out.println("After " + shoppingNames.peek().getMin() +" minutes in the shopping center, customer " + shoppingNames.peek().getName()
-							+ " with " + shoppingNames.peek().sizeOfCart() + " is now in the express checkout line");					
-					express.enqueue(shoppingNames.peek());
-					checkoutNames.enqueue(shoppingNames.peek());
-					shoppingNames.dequeue();
+					numCheckOutTwo++;
 				 }
+
+					break;
 					
 				case 5:
 				// User is prompted in (Y/N) question format whether the first customer in the
@@ -209,7 +224,7 @@ public class Driver {
 				if (shoppingNames.isEmpty()) {
 					System.out.println("No customers are in the Shopping Center!");
 				} else {
-				System.out.println("The following " + numCustomers + " customers are in the shopping center:");
+				System.out.println("The following " + numShopping + " customers are in the shopping center:");
 					for(Customer cust: shoppingNames)
 					{
 						System.out.println("Customer " + cust.getName() + " with " + cust.sizeOfCart() + " items for " +  cust.getMin() + " minutes.");
@@ -222,20 +237,29 @@ public class Driver {
 				if (line1.isEmpty()) {
 					System.out.println("No customers are in the first shopping line!");
 				} else {
-					System.out.println(
-							"The following (num) customers are in the first checkout line : " + line1.toString());
+				System.out.println("The following " + numCheckOutOne + " customers are in the first checkout line: ");
+					for(Customer cust: line1)
+					{
+						System.out.print(cust.getName()+" ");
+					}
 				}
 				if (line2.isEmpty()) {
 					System.out.println("No customers are in the second shopping line!");
 				} else {
-					System.out.println(
-							"The following (num) customers are in the second checkout line : " + line2.toString());
+					System.out.println("The following " + numCheckOutTwo + " customers are in the second checkout line: ");
+					for(Customer cust: line2)
+					{
+						System.out.print(cust.getName() + " ");
+					}
 				}
 				if (express.isEmpty()) {
 					System.out.println("No customers are in the express shopping line!");
 				} else {
-					System.out.println(
-							"The following (num) customers are in the express checkout line : " + express.toString());
+					System.out.println("The following " + numExpress + " customers are in the express checkout line: ");
+					for(Customer cust: express)
+					{
+						System.out.print(cust.getName() + " ");
+					}
 				}
 				break;
 

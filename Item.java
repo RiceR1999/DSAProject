@@ -31,6 +31,11 @@ public class Item {
 		this.itemCount = count;
 	}
 	
+	public void decrementCount()
+	{
+		itemCount--;
+	}
+	
 	/**
 	 * Accessor that gets item count
 	 * @return itemCount

@@ -143,7 +143,7 @@ public class Driver {
 				}
 				break;
 
-case 4:
+			case 4:
 				// The program picks the customer who has been shopping for the most amount of
 				// time
 				// (In order to simulate the passing of time, you should assume that every time
@@ -240,7 +240,7 @@ case 4:
 				System.out.println("The following " + numCheckOutOne + " customers are in the first checkout line: ");
 					for(Customer cust: line1)
 					{
-						System.out.print(cust.getName()+" ");
+						System.out.println(cust.getName()+" ");
 					}
 				}
 				if (line2.isEmpty()) {
@@ -249,7 +249,7 @@ case 4:
 					System.out.println("The following " + numCheckOutTwo + " customers are in the second checkout line: ");
 					for(Customer cust: line2)
 					{
-						System.out.print(cust.getName() + " ");
+						System.out.println(cust.getName() + " ");
 					}
 				}
 				if (express.isEmpty()) {
@@ -258,7 +258,7 @@ case 4:
 					System.out.println("The following " + numExpress + " customers are in the express checkout line: ");
 					for(Customer cust: express)
 					{
-						System.out.print(cust.getName() + " ");
+						System.out.println(cust.getName() + " ");
 					}
 				}
 				break;

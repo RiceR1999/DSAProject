@@ -1,22 +1,21 @@
+import java.util.Iterator;
+
 /*
- * Purpose: Data Structure and Algorithms Final Project
+ * Purpose: Data Structure and Algorithms Lab 6 Pre-Lab
  * Status: Complete and thoroughly tested
  * Last update: 10/9/18
  * Submitted: 10/9/18
  * Comment: no test suite or sample run attached
- * @author: Ryan Rice & Kristen Stansfield
+ * @author: 
  * @version: 2018.10.9
  */
-public class QueueRA<T> implements QueueInterface<T> {
+public class QueueRA<T> implements Iterable<T>, QueueInterface<T> {
 	
 	public T[]items;
 	public int back; //the index of the first available array entry
 	public int front;
 	int numItems;
 	
-	/**
-	 * Constructor for QueueRA
-	 */
 	public QueueRA() {
 		items = (T[]) new Object [10];
 		back = 0;
@@ -24,17 +23,27 @@ public class QueueRA<T> implements QueueInterface<T> {
 		numItems=0;
 	}
 	
-	/**
-	 * Checks if queue is empty
-	 */
+	public QueueRA<T> copyQueueExceptItem(T item2)
+	{
+		QueueRA<T> temp = new QueueRA<T>();
+		for(T item: items)
+		{	if(item.equals(item2))
+				;
+			else {
+			temp.enqueue(item);
+		     }
+		}
+		temp.back = this.back;
+		temp.front = this.front;
+		temp.numItems = this.numItems;
+		return temp;
+	}
+
+
 	public boolean isEmpty() {
 		return numItems==0;
 	}
 
-	/**
-	 * enqueue a new item 
-	 * @param newItem
-	 */
 	public void enqueue(T newItem) throws QueueException {
 			items[back] =  newItem;
 			back = (back+1) % items.length;
@@ -43,10 +52,8 @@ public class QueueRA<T> implements QueueInterface<T> {
 		
 	}
 		
-	/**
-	 * dequeue first item in the queue
-	 */
-	public T dequeue() throws QueueException{
+
+		 public T dequeue() throws QueueException{
 			  
 			  if((back == 0) && (front == 0))
 			  {
@@ -72,9 +79,7 @@ public class QueueRA<T> implements QueueInterface<T> {
 		  }
 	
 
-	/**
-	 * removes all items from queue
-	 */
+	//Changed this method
 	public void dequeueAll() {
 		front = 0;
 		back = -1;
@@ -82,9 +87,7 @@ public class QueueRA<T> implements QueueInterface<T> {
 	}
 	
 	
-	/**
-	 * resizes the array by length * 2
-	 */
+	//Added this method
 	protected void resize() {
 		T [] temp = (T[]) new Object [items.length*2];
         for (int i = 0; i < numItems; i++) {
@@ -92,6 +95,51 @@ public class QueueRA<T> implements QueueInterface<T> {
         }
         items = temp;
         front = 0;
+       
+    }
+	
+	
+	public String toString() {
+			  int curr = 0;
+			  String result = "";
+			  while(curr < numItems) {
+			   if(items[curr]!=null) {
+				  result = result + items[curr].toString() + " ";
+			  }
+			   curr++;
+		  }
+			  return result;
+	}
+	
+	
+	public T peek() throws QueueException {
+		return items[front];
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		Iterator<T> it = new Iterator<T>() {
+
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < numItems && items[currentIndex] != null;
+            }
+
+            @Override
+            public T next() {
+                return items[currentIndex++];
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return it;
+    }
+	}
        
     }
 	

@@ -61,7 +61,7 @@ public class Driver {
 			System.out.println("0. Close the Shopping Center");
 			System.out.println("1. Customer enters Shopping Center.");
 			System.out.println("2. Customer picks an item and places it in the shopping cart.");
-			System.out.println("3. Customer removes an item from the shoppint cart.");
+			System.out.println("3. Customer removes an item from the shopping cart.");
 			System.out.println("4. Customer is done shopping. ");
 			System.out.println("5. Customer checks out.");
 			System.out.println("6. Print info about customers who are shopping.");
